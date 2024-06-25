@@ -32,37 +32,37 @@ Aoyukmt 是一个使用 AutoHotkey (AHK) 创建的键盘增强工具，通过各
 
 - **快速打开目录**
   - 使用快捷键快速打开目录：
-    - `右Shift+Alt+A` 打开 `D:\`
-    - `右Shift+Alt+W` 打开 `W:\`
-    - `右Shift+Alt+I` 打开 `R:\`
-    - `右Shift+Alt+M` 打开 `E:\`
-    - `右Shift+Alt+D` 打开 `F:\`
-    - `右Shift+Alt+S` 打开 `C:\`
+    - `右Shift+A` 打开 `D:\`
+    - `右Shift+W` 打开 `W:\`
+    - `右Shift+I` 打开 `R:\`
+    - `右Shift+M` 打开 `E:\`
+    - `右Shift+D` 打开 `F:\`
+    - `右Shift+S` 打开 `C:\`
 
 - **常用程序启动**
   - 通过快捷键启动常用程序：
-    - `右Alt+Shift+L` 启动 Listary
-    - `右Alt+Shift+G` 启动 Chrome
-    - `右Alt+Shift+C` 启动 Clash for Windows
-    - `右Alt+Shift+U` 启动 uTools
-    - `右Alt+Shift+P` 启动 PixPin
-    - `右Alt+Shift+H` 启动 HiBit Uninstaller
-    - `右Alt+Shift+Q` 启动 QQ
-    - `右Alt+Shift+W` 启动 WeChat
-    - `右Alt+Shift+V` 启动 VS Code
-    - `右Alt+Shift+I` 启动 IntelliJ IDEA
-    - `右Alt+Shift+T` 启动 Typora
-    - `右Alt+Shift+A` 启动 Apifox
-    - `右Alt+Shift+N` 启动 Navicat
-    - `右Alt+Shift+M` 启动 lx-music
+    - `左Alt+L` 启动 Listary
+    - `左Alt+G` 启动 Chrome
+    - `左Alt+C` 启动 Clash for Windows
+    - `左Alt+U` 启动 uTools
+    - `左Alt+P` 启动 PixPin
+    - `左Alt+H` 启动 HiBit Uninstaller
+    - `左Alt+Q` 启动 QQ
+    - `左Alt+W` 启动 WeChat
+    - `左Alt+V` 启动 VS Code
+    - `左Alt+I` 启动 IntelliJ IDEA
+    - `左Alt+T` 启动 Typora
+    - `左Alt+A` 启动 Apifox
+    - `左Alt+N` 启动 Navicat
+    - `左Alt+M` 启动 lx-music
 
 - **网址快捷操作**
   - 使用快捷键快速打开常用网站：
-    - `右Alt+Shift+B` 打开哔哩哔哩
-    - `右Alt+Shift+C` 打开 CSDN
-    - `右Alt+Shift+G` 打开 ChatGPT
-    - `右Alt+Shift+Y` 打开 YouTube
-    - `右Alt+Shift+D` 打开抖音
+    - `右Alt+B` 打开哔哩哔哩
+    - `右Alt+C` 打开 CSDN
+    - `右Alt+G` 打开 ChatGPT
+    - `右Alt+Y` 打开 YouTube
+    - `右Alt+D` 打开抖音
 
 - **特殊组合键**
   - `Space+Enter`：选中整行
