@@ -136,7 +136,7 @@ $#::#
 }
 
 ;Del
-#i:: {
+#-:: {
     Send("{Del}")
     return
 }
@@ -155,7 +155,7 @@ $#::#
 }
 
 ; ;打开cmd
-; #]::Run("C:\Windows\System32\cmd.exe")
+#]::Run("D:\a.terminal\Microsoft.WindowsTerminal_1.20.11381.0_x64\terminal-1.20.11381.0\wt.exe")
 
 
 ;系统功能操作
