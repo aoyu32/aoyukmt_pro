@@ -1,4 +1,4 @@
-TraySetIcon("E:\m.icons\icons.ahk\2.ico")
+TraySetIcon(".\img\2.ico")
 A_IconTip := "aoyukmt"
 
 ;移动窗口到指定显示器
