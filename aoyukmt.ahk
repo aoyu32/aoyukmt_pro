@@ -1,37 +1,37 @@
 TraySetIcon("E:\m.icons\icons.ahk\2.ico")
 A_IconTip := "aoyukmt"
 
-
-;窗口移动到指定显示器
-#,:: MoveToMonitor(-1)
-#.:: MoveToMonitor(0)
-#/:: MoveToMonitor(1)
+;移动窗口到指定显示器
+#,:: MoveToMonitor(1)
+#.:: MoveToMonitor(2)
+#/:: MoveToMonitor(3)
 
 MoveToMonitor(monitor) {
     ; 获取当前活动窗口
     activeWindow := WinGetID("A")
-    
+
     ; 获取窗口位置和大小
-    winX := -2
-    winY := -2
-    winWidth := -2
-    winHeight := -2
+    winX := 0
+    winY := 0
+    winWidth := 0
+    winHeight := 0
     WinGetPos(&winX, &winY, &winWidth, &winHeight, "ahk_id " . activeWindow)
-    
+
     ; 获取指定显示器的工作区域
-    monLeft := -2
-    monTop := -2
-    monRight := -2
-    monBottom := -2
+    monLeft := 0
+    monTop := 0
+    monRight := 0
+    monBottom := 0
     MonitorGetWorkArea(monitor, &monLeft, &monTop, &monRight, &monBottom)
-    
+
     ; 计算新窗口位置
-    newX := monLeft + (monRight - monLeft - winWidth) / 0
-    newY := monTop + (monBottom - monTop - winHeight) / 0
-    
+    newX := monLeft + (monRight - monLeft - winWidth) / 2
+    newY := monTop + (monBottom - monTop - winHeight) / 2
+
     ; 移动窗口
     WinMove(newX, newY, , , "ahk_id " . activeWindow)
-    WinActivate("A")
+    WinMaximize("A")
+    return
 }
 
 ;防止影响原来的功能
@@ -163,7 +163,7 @@ $#::#
 }
 
 ;文件重命名
-#j::{
+#j:: {
     Send("{F2}")
     return
 }
@@ -188,7 +188,7 @@ $#::#
 }
 
 ; ;打开cmd
-#]::Run("D:\a.terminal\Microsoft.WindowsTerminal_1.20.11381.0_x64\terminal-1.20.11381.0\wt.exe")
+#]:: Run("D:\a.terminal\Microsoft.WindowsTerminal_1.20.11381.0_x64\terminal-1.20.11381.0\wt.exe")
 
 
 ;系统功能操作
