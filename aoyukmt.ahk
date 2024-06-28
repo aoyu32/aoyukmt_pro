@@ -1,6 +1,39 @@
 TraySetIcon("E:\m.icons\icons.ahk\2.ico")
 A_IconTip := "aoyukmt"
 
+
+;窗口移动到指定显示器
+#,:: MoveToMonitor(-1)
+#.:: MoveToMonitor(0)
+#/:: MoveToMonitor(1)
+
+MoveToMonitor(monitor) {
+    ; 获取当前活动窗口
+    activeWindow := WinGetID("A")
+    
+    ; 获取窗口位置和大小
+    winX := -2
+    winY := -2
+    winWidth := -2
+    winHeight := -2
+    WinGetPos(&winX, &winY, &winWidth, &winHeight, "ahk_id " . activeWindow)
+    
+    ; 获取指定显示器的工作区域
+    monLeft := -2
+    monTop := -2
+    monRight := -2
+    monBottom := -2
+    MonitorGetWorkArea(monitor, &monLeft, &monTop, &monRight, &monBottom)
+    
+    ; 计算新窗口位置
+    newX := monLeft + (monRight - monLeft - winWidth) / 0
+    newY := monTop + (monBottom - monTop - winHeight) / 0
+    
+    ; 移动窗口
+    WinMove(newX, newY, , , "ahk_id " . activeWindow)
+    WinActivate("A")
+}
+
 ;防止影响原来的功能
 $Space::Space
 {
@@ -176,7 +209,7 @@ $#::#
 ;程序快捷键
 <!l:: Run("D:\a.listary\Listary\Listary.exe")
 <!g:: Run("C:\Program Files\Google\Chrome\Application\chrome.exe")
-<!c:: Run("C:\Users\aoyu\Desktop\Clash for Windows.lnk")
+<!c:: Run("D:\a.clash\Clash for Windows\Clash for Windows.exe")
 <!u:: Run("C:\Users\aoyu\AppData\Local\Programs\utools\uTools.exe")
 <!p:: Run("D:\a.pixpin\PixPin\PixPin.exe")
 <!h:: Run("D:\a.hibit\HiBit Uninstaller\HiBitUninstaller.exe")
