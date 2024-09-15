@@ -11,19 +11,27 @@ ShowHotkeyAction(action, isShow) {
     return
 }
 
+;托盘图标操作
+#u::  ; Win + U
+{
+    ; 发送 Win + B 来选择系统托盘
+    Send("#b")
+    Send("{Enter}")
+    Return
+}
 
 ;移动窗口到指定显示器
 #,:: {
     MoveToMonitor(1)
-    ShowHotkeyAction("窗口移动到显示器1",1)
+    ShowHotkeyAction("窗口移动到显示器1", 1)
 }
 #.:: {
     MoveToMonitor(2)
-    ShowHotkeyAction("窗口移动到显示器2",1)
+    ShowHotkeyAction("窗口移动到显示器2", 1)
 }
 #/:: {
     MoveToMonitor(3)
-    ShowHotkeyAction("窗口移动到显示器3",1)
+    ShowHotkeyAction("窗口移动到显示器3", 1)
 }
 
 MoveToMonitor(monitor) {
@@ -80,7 +88,7 @@ $#::#
     thisWin := WinGetTitle("A")
     allWindows := WinGetList(, , ,)
     winStr := ""
-    ShowHotkeyAction("切换窗口焦点",1)
+    ShowHotkeyAction("切换窗口焦点", 1)
     for index, value in allWindows {
         if (
             WinGetTitle(value) != "" and
@@ -119,42 +127,42 @@ $#::#
 ;打开磁盘
 ;application
 >+a:: {
-    ShowHotkeyAction("打开D盘：Application",1)
+    ShowHotkeyAction("打开D盘：Application", 1)
     Run "D:\"
     return
 }
 
 ;workspace
 >+w:: {
-    ShowHotkeyAction("打开W盘：Workspace",1)
+    ShowHotkeyAction("打开W盘：Workspace", 1)
     Run "W:\"
     return
 }
 
 ;installer
 >+i:: {
-    ShowHotkeyAction("打开R盘：Installer",1)
+    ShowHotkeyAction("打开R盘：Installer", 1)
     Run "R:\"
     return
 }
 
 ;media
 >+m:: {
-    ShowHotkeyAction("打开E盘：Media",1)
+    ShowHotkeyAction("打开E盘：Media", 1)
     Run "E:\"
     return
 }
 
 ;document
 >+d:: {
-    ShowHotkeyAction("打开F盘：Document",1)
+    ShowHotkeyAction("打开F盘：Document", 1)
     Run "F:\"
     return
 }
 
 ;system
 >+s:: {
-    ShowHotkeyAction("打开C盘：System",1)
+    ShowHotkeyAction("打开C盘：System", 1)
     Run "C:\"
     return
 }
@@ -163,7 +171,7 @@ $#::#
 ;窗口操作:
 ;关闭窗口
 #o:: {
-    ShowHotkeyAction("关闭当前窗口",1)
+    ShowHotkeyAction("关闭当前窗口", 1)
     Send("!{F4}")
     return
 }
@@ -171,7 +179,7 @@ $#::#
 ;最小化当前窗口
 #m::
 {
-    ShowHotkeyAction("最小化当前窗口",1)
+    ShowHotkeyAction("最小化当前窗口", 1)
     WinActivate("A")
     WinMinimize("A")
     return
@@ -180,7 +188,7 @@ $#::#
 
 ;最大化当前窗口
 #n:: {
-    ShowHotkeyAction("最大化当前窗口",1)
+    ShowHotkeyAction("最大化当前窗口", 1)
     WinActivate("A")
     WinMaximize("A")
     return
@@ -188,38 +196,37 @@ $#::#
 
 ;资源管理器操作
 ;创建文件夹
-#u::
+#=::
 {
-    ShowHotkeyAction("创建新文件夹",1)
+    ShowHotkeyAction("创建新文件夹", 1)
     Send("^+n")
     return
 }
 
 ;文件重命名
 #j:: {
-    ShowHotkeyAction("文件重命名",1)
+    ShowHotkeyAction("文件重命名", 1)
     Send("{F2}")
     return
 }
 
 ;Del
 #-:: {
-    ShowHotkeyAction("删除文件/文件夹",1)
+    ShowHotkeyAction("删除文件/文件夹", 1)
     Send("{Del}")
     return
 }
 
 ;打开资源管理器
 #p:: {
-    ShowHotkeyAction("打开资源管理器",1)
+    ShowHotkeyAction("打开资源管理器", 1)
     Send("#e")
-    WinActivate("A")
     return
 }
 
 ;打开任务管理器
 #[:: {
-    ShowHotkeyAction("打开任务管理器",1)
+    ShowHotkeyAction("打开任务管理器", 1)
     Send("^+{Esc}")
     return
 }
@@ -227,7 +234,7 @@ $#::#
 ; ;打开cmd
 #]::
 {
-    ShowHotkeyAction("打开PowerShell",1)
+    ShowHotkeyAction("打开PowerShell", 1)
     Run("D:\a.terminal\Microsoft.WindowsTerminal_1.20.11381.0_x64\terminal-1.20.11381.0\wt.exe")
     return
 }
@@ -237,17 +244,32 @@ $#::#
 ;减声音
 !-::
 {
-    ShowHotkeyAction("系统声音减3",1)
+    ShowHotkeyAction("系统声音减3", 1)
     Send ("{Volume_Down 3}")
     return
 }
 ;加声音
 !=::
 {
-    ShowHotkeyAction("系统声音加3",1)
+    ShowHotkeyAction("系统声音加3", 1)
     Send ("{Volume_Up 3}")
     return
 }
+
+;关机
+#0:: {
+    ShowHotkeyAction("关闭计算机", 1)
+    Shutdown(1)
+    return
+}
+
+;重启
+#1:: {
+    ShowHotkeyAction("重启计算机", 1)
+    Shutdown(2)
+    return
+}
+
 
 ;程序启动操作
 ;程序快捷键
@@ -345,64 +367,79 @@ $#::#
     StartApplication("https://www.youtube.com/", "打开网站--YouTube")
 }
 
+>!d:: {
+    StartApplication("https://www.douyin.com/", "打开网站--Douyin")
+}
+
 StartApplication(path, action) {
-    ShowHotkeyAction(action,1)
+    ShowHotkeyAction(action, 1)
     Run(path)
 }
 
 
 ;SPACE组合键
+
+Space & [::
+{
+    ShowHotkeyAction("返回上一级文件夹", 1)
+    if WinActive("ahk_class CabinetWClass")
+    {
+        Send("{Alt down}{Left}{Alt up}")
+    }
+}
+
+
 Space & Enter:: {
-    ShowHotkeyAction("选中当前行",1)
+    ShowHotkeyAction("选中当前行", 1)
     Send("{Home}{Shift Down}{End}{Shift Up}")
     return
 }
 
 ;右键菜单
 Space & r:: {
-    ShowHotkeyAction("显示右键菜单",1)
+    ShowHotkeyAction("显示右键菜单", 1)
     Send("{AppsKey}")
     return
 }
 
 Space & o:: {
-    ShowHotkeyAction("光标移动到行首",1)
+    ShowHotkeyAction("光标移动到行首", 1)
     Send("{Home}")
     return
 }
 
 Space & p:: {
-    ShowHotkeyAction("光标移动到行尾",1)
+    ShowHotkeyAction("光标移动到行尾", 1)
     Send("{End}")
     return
 }
 
 Space & q:: {
-    ShowHotkeyAction("全选",1)
+    ShowHotkeyAction("全选", 1)
     Send("^a")
     return
 }
 
 Space & z:: {
-    ShowHotkeyAction("撤销",1)
+    ShowHotkeyAction("撤销", 1)
     Send("^z")
     return
 }
 
 Space & x:: {
-    ShowHotkeyAction("剪切",1)
+    ShowHotkeyAction("剪切", 1)
     Send("^x")
     return
 }
 
 Space & c:: {
-    ShowHotkeyAction("复制",1)
+    ShowHotkeyAction("复制", 1)
     Send("^c")
     return
 }
 
 Space & v:: {
-    ShowHotkeyAction("粘贴",1)
+    ShowHotkeyAction("粘贴", 1)
     Send("^v")
     return
 }
@@ -410,7 +447,7 @@ Space & v:: {
 ;Delete键
 Space & j::
 {
-    ShowHotkeyAction("退格",1)
+    ShowHotkeyAction("退格", 1)
     Send("{BackSpace}")
     return
 }
@@ -418,118 +455,118 @@ Space & j::
 ;Esc键
 Space & e::
 {
-    ShowHotkeyAction("取消(ESC)",1)
+    ShowHotkeyAction("取消(ESC)", 1)
     Send("{Esc}")
     return
 }
 
 Space & 1:: {
-    ShowHotkeyAction("输入字符--(!/！)",1)
+    ShowHotkeyAction("输入字符--(!/！)", 1)
     Send("{!}")
     return
 }
 
 Space & 2:: {
-    ShowHotkeyAction("输入字符--(@)",1)
+    ShowHotkeyAction("输入字符--(@)", 1)
     Send("@")
     return
 }
 
 Space & 3:: {
-    ShowHotkeyAction("输入字符--(#)",1)
+    ShowHotkeyAction("输入字符--(#)", 1)
     Send("{#}")
     return
 }
 
 Space & 5:: {
-    ShowHotkeyAction("输入字符--(%)",1)
+    ShowHotkeyAction("输入字符--(%)", 1)
     Send("{%}")
     return
 }
 
 Space & 4:: {
-    ShowHotkeyAction("输入字符--($/￥)",1)
+    ShowHotkeyAction("输入字符--($/￥)", 1)
     Send("$")
     return
 }
 
 Space & 8:: {
-    ShowHotkeyAction("输入字符--(*)",1)
+    ShowHotkeyAction("输入字符--(*)", 1)
     Send("{*}")
     return
 }
 
 Space & 7:: {
-    ShowHotkeyAction("输入字符--(&)",1)
+    ShowHotkeyAction("输入字符--(&)", 1)
     Send("&")
     return
 }
 
 Space & 6:: {
-    ShowHotkeyAction("输入字符--(^/……)",1)
+    ShowHotkeyAction("输入字符--(^/……)", 1)
     Send("{^}")
     return
 }
 
 Space & t:: {
-    ShowHotkeyAction("输入字符--(+)",1)
+    ShowHotkeyAction("输入字符--(+)", 1)
     Send("{+}")
     return
 }
 
 Space & u:: {
-    ShowHotkeyAction("输入字符--(-)",1)
+    ShowHotkeyAction("输入字符--(-)", 1)
     Send("-")
     return
 }
 
 Space & \:: {
-    ShowHotkeyAction("输入字符--(|)",1)
+    ShowHotkeyAction("输入字符--(|)", 1)
     Send("|")
     return
 }
 
 Space & b:: {
-    ShowHotkeyAction("输入字符--(~)",1)
+    ShowHotkeyAction("输入字符--(~)", 1)
     Send("~")
     return
 }
 
 ;()
 Space & g:: {
-    ShowHotkeyAction("输入小括号",1)
+    ShowHotkeyAction("输入小括号", 1)
     Send("()")
     return
 }
 
 Space & n:: {
-    ShowHotkeyAction("输入字符--(_)",1)
+    ShowHotkeyAction("输入字符--(_)", 1)
     Send("_")
     return
 }
 
 Space & y:: {
-    ShowHotkeyAction("输入字符--(=)",1)
+    ShowHotkeyAction("输入字符--(=)", 1)
     Send("=")
     return
 }
 ;{}
 Space & h:: {
-    ShowHotkeyAction("输入大括号",1)
+    ShowHotkeyAction("输入大括号", 1)
     Send("{{}}")
     return
 }
 
 ;[]
 Space & f:: {
-    ShowHotkeyAction("输入中括号",1)
+    ShowHotkeyAction("输入中括号", 1)
     Send("[]")
     return
 }
 
 ;:
 Space & `;:: {
-    ShowHotkeyAction("输入字符--(:)",1)
+    ShowHotkeyAction("输入字符--(:)", 1)
     Send(":")
     return
 }
@@ -537,25 +574,25 @@ Space & `;:: {
 ;""
 Space & '::
 {
-    ShowHotkeyAction("输入双引号",1)
+    ShowHotkeyAction("输入双引号", 1)
     Send("{`"}")
     return
 }
 
 Space & ,:: {
-    ShowHotkeyAction("输入尖括号",1)
+    ShowHotkeyAction("输入尖括号", 1)
     Send("<>")
     return
 }
 
 Space & .:: {
-    ShowHotkeyAction("输入尖括号",1)
+    ShowHotkeyAction("输入尖括号", 1)
     Send("<>")
     return
 }
 
 Space & /:: {
-    ShowHotkeyAction("输入字符--(?)",1)
+    ShowHotkeyAction("输入字符--(?)", 1)
     Send("?")
     return
 }
@@ -563,15 +600,15 @@ Space & /:: {
 ; 按下 Space + i 显示当前窗口的输入法状态
 Space & i::
 {
+    Send("{Shift}")
     static isEN := true
     if (isEN = true) {
-        ShowHotkeyAction("切换输入法00",1)
+        ShowHotkeyAction("切换输入法00", 1)
         isEN := false
     } else {
-        ShowHotkeyAction("切换输入法01",1)
+        ShowHotkeyAction("切换输入法01", 1)
         isEN := true
     }
-    Send("{Shift}")
     return
 }
 
@@ -579,7 +616,7 @@ Space & i::
 ;向上滑动
 Space & k::
 {
-    ShowHotkeyAction("向上滑动",0)
+    ShowHotkeyAction("向上滑动", 0)
     Send("{WheelUp}")
     return
 }
@@ -587,7 +624,7 @@ Space & k::
 ;向下滑动
 Space & l::
 {
-    ShowHotkeyAction("向下滑动",0)
+    ShowHotkeyAction("向下滑动", 0)
     Send("{WheelDown}")
     return
 }
@@ -596,28 +633,28 @@ Space & l::
 ;左
 Space & a::
 {
-    ShowHotkeyAction("方向键--左",0)
+    ShowHotkeyAction("方向键--左", 0)
     Send("{Left}")
     return
 }
 ;右
 Space & d::
 {
-    ShowHotkeyAction("方向键--右",0)
+    ShowHotkeyAction("方向键--右", 0)
     Send("{Right}")
     return
 }
 ;上
 Space & w::
 {
-    ShowHotkeyAction("方向键--上",0)
+    ShowHotkeyAction("方向键--上", 0)
     Send("{Up}")
     return
 }
 ;下
 Space & s::
 {
-    ShowHotkeyAction("方向键--下",0)
+    ShowHotkeyAction("方向键--下", 0)
     Send("{Down}")
     return
 }
@@ -626,7 +663,7 @@ Space & s::
 ; 定义热键 Win+F
 #f:: {
 
-    ShowHotkeyAction("创建a.文件夹",0)
+    ShowHotkeyAction("创建a.文件夹", 0)
     ; 弹出输入框
     userInput := InputBox("创建文件夹", "aoyukmt-mkdir", "w260 h90")
 
@@ -658,4 +695,3 @@ Space & s::
         SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTip
     }
 }
-
