@@ -15,6 +15,7 @@ ShowHotkeyAction(action, isShow) {
 #u::  ; Win + U
 {
     ; 发送 Win + B 来选择系统托盘
+    ShowHotkeyAction("操作托盘图标",1)
     Send("#b")
     Send("{Enter}")
     Return
@@ -384,7 +385,7 @@ Space & [::
     ShowHotkeyAction("返回上一级文件夹", 1)
     if WinActive("ahk_class CabinetWClass")
     {
-        Send("{Alt down}{Left}{Alt up}")
+        Send("!{Up}")
     }
 }
 
@@ -692,6 +693,6 @@ Space & s::
         SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTip
     } catch as err {
         ToolTip("创建文件夹时出错: " err.Message)
-        SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTip
+        SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTipy
     }
 }
