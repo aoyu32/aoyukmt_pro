@@ -140,6 +140,7 @@ $#::#
     return
 }
 
+
 ;installer
 >+i:: {
     ShowHotkeyAction("打开R盘：Installer", 1)
