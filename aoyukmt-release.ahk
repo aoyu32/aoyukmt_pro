@@ -21,47 +21,6 @@ ShowHotkeyAction(action, isShow) {
     Return
 }
 
-;移动窗口到指定显示器
-#,:: {
-    MoveToMonitor(1)
-    ShowHotkeyAction("窗口移动到显示器1", 1)
-}
-#.:: {
-    MoveToMonitor(2)
-    ShowHotkeyAction("窗口移动到显示器2", 1)
-}
-#/:: {
-    MoveToMonitor(3)
-    ShowHotkeyAction("窗口移动到显示器3", 1)
-}
-
-MoveToMonitor(monitor) {
-    ; 获取当前活动窗口
-    activeWindow := WinGetID("A")
-
-    ; 获取窗口位置和大小
-    winX := 0
-    winY := 0
-    winWidth := 0
-    winHeight := 0
-    WinGetPos(&winX, &winY, &winWidth, &winHeight, "ahk_id " . activeWindow)
-
-    ; 获取指定显示器的工作区域
-    monLeft := 0
-    monTop := 0
-    monRight := 0
-    monBottom := 0
-    MonitorGetWorkArea(monitor, &monLeft, &monTop, &monRight, &monBottom)
-
-    ; 计算新窗口位置
-    newX := monLeft + (monRight - monLeft - winWidth) / 2
-    newY := monTop + (monBottom - monTop - winHeight) / 2
-
-    ; 移动窗口
-    WinMove(newX, newY, , , "ahk_id " . activeWindow)
-    WinMaximize("A")
-    return
-}
 
 ;防止影响原来的功能
 $Space::Space
@@ -116,55 +75,20 @@ $#::#
 }
 
 
-; ;文本填充操作
-:*:qd/::3256515381@qq.com
-:*:qx/::339983216@qq.com
-:*:gd/::aoyu3399@gmail.com
-:*:gx/::aoyu3256@gmail.com
-:*:te/::15527287795
-
 
 ;打开磁盘
-;application
->+a:: {
-    ShowHotkeyAction("打开D盘：Application", 1)
-    Run "D:\"
-    return
-}
-
-;workspace
->+w:: {
-    ShowHotkeyAction("打开W盘：Workspace", 1)
-    Run "W:\"
-    return
-}
-
-
-;installer
->+i:: {
-    ShowHotkeyAction("打开R盘：Installer", 1)
-    Run "R:\"
-    return
-}
-
-;media
->+m:: {
-    ShowHotkeyAction("打开E盘：Media", 1)
-    Run "E:\"
-    return
-}
-
-;document
->+d:: {
-    ShowHotkeyAction("打开F盘：Document", 1)
-    Run "F:\"
-    return
-}
-
-;system
->+s:: {
-    ShowHotkeyAction("打开C盘：System", 1)
+;c disk
+>+c:: {
+    ShowHotkeyAction("打开C盘", 1)
     Run "C:\"
+    return
+}
+
+
+;d disk
+>+d:: {
+    ShowHotkeyAction("打开D盘", 1)
+    Run "D:\"
     return
 }
 
@@ -236,7 +160,7 @@ $#::#
 #]::
 {
     ShowHotkeyAction("打开PowerShell", 1)
-    Run("D:\a.terminal\Microsoft.WindowsTerminal_1.20.11381.0_x64\terminal-1.20.11381.0\wt.exe")
+    Run("cmd.exe")
     return
 }
 
@@ -280,106 +204,6 @@ Space & m::{
     return
 }
 
-
-;程序启动操作
-;程序快捷键
-<!l:: {
-    StartApplication("D:\a.listary\Listary\Listary.exe", "启动--Listary")
-    return
-}
-
-<!g:: {
-    StartApplication("C:\Program Files\Google\Chrome\Application\chrome.exe", "启动--Chrome")
-    return
-}
-
-<!c:: {
-    StartApplication("D:\a.clash\Clash for Windows\Clash for Windows.exe", "启动--Clash")
-    return
-}
-
-<!u:: {
-    StartApplication("C:\Users\aoyu\AppData\Local\Programs\utools\uTools.exe", "启动--Utools")
-    return
-}
-
-<!p:: {
-    StartApplication("D:\a.pixpin\PixPin\PixPin.exe", "启动--PixPin")
-    return
-}
-
-<!h:: {
-    StartApplication("D:\a.hibit\HiBit Uninstaller\HiBitUninstaller.exe", "启动--HiBitUninstaller")
-    return
-}
-
-<!q:: {
-    StartApplication("D:\a.qq\QQNT\QQ.exe", "启动--QQ")
-    return
-}
-
-<!w:: {
-    StartApplication("D:\a.wechat\WeChat\WeChat.exe", "启动--微信")
-    return
-}
-
-<!i:: {
-    StartApplication("D:\a.idea\IntelliJ IDEA 2024.1.2\bin\idea64.exe", "启动--Idea")
-    return
-}
-
-<!t:: {
-    StartApplication("D:\a.typora\Typora\Typora.exe", "启动--Typora")
-    return
-}
-
-<!a:: {
-    StartApplication("D:\a.apifox\Apifox\Apifox.exe", "启动--Apifox")
-    return
-}
-
-<!n:: {
-    StartApplication("D:\a.navicat\Navicat Premium 17\navicat.exe", "启动--Navicat")
-    return
-}
-
-<!m:: {
-    StartApplication("D:\a.lxmusic\lx-music-desktop\lx-music-desktop.exe", "启动--Lxmusic")
-    return
-}
-
-<!o:: {
-    StartApplication("D:\a.obsidian\Obsidian\Obsidian.exe", "启动--Obsidian")
-    return
-}
-
-<!s:: {
-    StartApplication("D:\a.singbox\GUI.for.SingBox-windows-amd64\GUI.for.SingBox.exe", "启动--Sing box")
-    return
-}
-
->!c:: {
-    StartApplication("https://www.csdn.net/", "打开网站--CSDN")
-    return
-}
-
->!g:: {
-    StartApplication("https://chat.openai.com/chat", "打开网站--ChatGpt")
-    return
-}
-
->!b:: {
-    StartApplication("https://www.bilibili.com/", "打开网站--Bilibili")
-    return
-}
-
->!y:: {
-    StartApplication("https://www.youtube.com/", "打开网站--YouTube")
-}
-
->!d:: {
-    StartApplication("https://www.douyin.com/", "打开网站--Douyin")
-}
 
 StartApplication(path, action) {
     ShowHotkeyAction(action, 1)
@@ -671,9 +495,10 @@ Space & s::
 
 
 ; 定义热键 Win+F
+; 定义热键 Win+F
 #f:: {
-
-    ShowHotkeyAction("创建a.文件夹", 0)
+    ShowHotkeyAction("在D盘创建文件夹", 0)
+    
     ; 弹出输入框
     userInput := InputBox("创建文件夹", "aoyukmt-mkdir", "w260 h90")
 
@@ -681,27 +506,19 @@ Space & s::
     if userInput.Result == "Cancel"
         return
 
-    ; ; 解析用户输入
-    ; parts := StrSplit(userInput.Value, " ")
-    ; if parts.Length != 2 or parts[1] != "a"  {
-    ;     ToolTip("无效的命令")
-    ;     SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTip
-    ;     return
-    ; }
-
     ; 提取文件名
     folderName := StrReplace(userInput.Value, "'", "")  ; 移除引号
 
     ; 构建完整路径
-    fullPath := "D:\a." folderName
+    fullPath := "D:\" folderName
 
     ; 创建文件夹
     try {
         DirCreate(fullPath)
-        ToolTip(folderName "创建成功")
-        SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTip
+        ToolTip(folderName " 创建成功")
+        SetTimer(() => ToolTip(), -1000)  ; 3秒后移除ToolTip
     } catch as err {
         ToolTip("创建文件夹时出错: " err.Message)
-        SetTimer () => ToolTip(), -1000  ; 3秒后移除ToolTipy
+        SetTimer(() => ToolTip(), -1000)  ; 3秒后移除ToolTip
     }
 }
