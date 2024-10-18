@@ -451,11 +451,6 @@ Space & .:: {
     return
 }
 
-Space & /:: {
-    ShowHotkeyAction("输入字符--(?)", 1)
-    Send("?")
-    return
-}
 ; 按下 Space + i 显示当前窗口的输入法状态
 Space & i::
 {
