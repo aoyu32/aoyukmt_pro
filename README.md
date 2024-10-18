@@ -30,6 +30,7 @@ Aoyukmt 是一个使用 AutoHotkey (AHK) 创建的键盘增强工具，通过各
   - `Alt+=`：增加音量。
   - `Win+u`：操作托盘图标。
   - `Space + m`：打开系统剪切板
+  - `Space + ]`：打开应用任务视图列表
 
 - **文本扩展**
   - 自动扩展缩写，例如：
@@ -105,11 +106,14 @@ Aoyukmt 是一个使用 AutoHotkey (AHK) 创建的键盘增强工具，通过各
   - `Space+;`：输入 `:`
   - `Space+'`：输入 `"`
   - `Space+,`：输入 `<>`
-  - `Space+.`：输入 `<>`
+  - `Space+RShift`：输入`<`
+  - `Space+.`：输入`>`
   - `Space+/`：输入 `?`
+  - `Space+k`：输入 `.`
+  - `Space+l`：输入 `,`
   - `Space+I`：发送 `{Shift}`
-  - `Space+K`：发送 `{WheelUp}`
-  - `Space+L`：发送 `{WheelDown}`
+  - `Space+9`：发送 `{WheelUp}`
+  - `Space+0`：发送 `{WheelDown}`
   - `Space+A`：发送 `{Left}`
   - `Space+D`：发送 `{Right}`
   - `Space+W`：发送 `{Up}`
