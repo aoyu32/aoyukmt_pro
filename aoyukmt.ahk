@@ -15,7 +15,7 @@ ShowHotkeyAction(action, isShow) {
 #u::  ; Win + U
 {
     ; 发送 Win + B 来选择系统托盘
-    ShowHotkeyAction("操作托盘图标",1)
+    ShowHotkeyAction("操作托盘图标", 1)
     Send("#b")
     Send("{Enter}")
     Return
@@ -28,6 +28,7 @@ ShowHotkeyAction(action, isShow) {
 }
 #.:: {
     MoveToMonitor(2)
+
     ShowHotkeyAction("窗口移动到显示器2", 1)
 }
 #/:: {
@@ -243,13 +244,17 @@ $#::#
 
 ;系统功能操作
 ;剪切板映射
-
-Space & m::{
+Space & m:: {
     Send("#v")
     return
 }
 
-
+;应用任务列表
+space & ]:: {
+    ShowHotkeyAction("打开任务列表", 1)
+    Send("#{Tab}")
+    return
+}
 
 ;减声音
 !-::
@@ -589,21 +594,32 @@ Space & '::
     return
 }
 
-Space & ,:: {
+Space & RShift:: {
     ShowHotkeyAction("输入尖括号", 1)
-    Send("<>")
+    Send("<")
     return
 }
 
-Space & .:: {
+RShift:: {
     ShowHotkeyAction("输入尖括号", 1)
-    Send("<>")
+    Send(">")
     return
 }
 
 Space & /:: {
     ShowHotkeyAction("输入字符--(?)", 1)
     Send("?")
+    return
+}
+
+space & k:: {
+    ShowHotkeyAction("输入英文逗号--(.)", 1)
+    Send("{U+002E}")
+    return
+}
+Space & l:: {
+    ShowHotkeyAction("输入英文逗号--(,)", 1)
+    Send("{U+002C}")
     return
 }
 
@@ -622,9 +638,8 @@ Space & i::
     return
 }
 
-
 ;向上滑动
-Space & k::
+Space & 9::
 {
     ShowHotkeyAction("向上滑动", 0)
     Send("{WheelUp}")
@@ -632,7 +647,7 @@ Space & k::
 }
 
 ;向下滑动
-Space & l::
+Space & 0::
 {
     ShowHotkeyAction("向下滑动", 0)
     Send("{WheelDown}")

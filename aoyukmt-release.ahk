@@ -15,7 +15,7 @@ ShowHotkeyAction(action, isShow) {
 #u::  ; Win + U
 {
     ; 发送 Win + B 来选择系统托盘
-    ShowHotkeyAction("操作托盘图标",1)
+    ShowHotkeyAction("操作托盘图标", 1)
     Send("#b")
     Send("{Enter}")
     Return
@@ -73,7 +73,6 @@ $#::#
         WinActivate(WinGetTitle(winList[1]))
     }
 }
-
 
 
 ;打开磁盘
@@ -166,13 +165,17 @@ $#::#
 
 
 ;系统功能操作
+;应用任务列表
+space & ]:: {
+    ShowHotkeyAction("打开任务列表", 1)
+    Send("#{Tab}")
+    return
+}
 ;剪切板映射
-
-Space & m::{
+Space & m:: {
     Send("#v")
     return
 }
-
 
 
 ;减声音
@@ -431,6 +434,17 @@ Space & /:: {
     return
 }
 
+space & k:: {
+    ShowHotkeyAction("输入英文逗号--(.)", 1)
+    Send("{U+002E}")
+    return
+}
+Space & l:: {
+    ShowHotkeyAction("输入英文逗号--(,)", 1)
+    Send("{U+002C}")
+    return
+}
+
 ; 按下 Space + i 显示当前窗口的输入法状态
 Space & i::
 {
@@ -444,11 +458,11 @@ Space & i::
         isEN := true
     }
     return
+
 }
 
-
 ;向上滑动
-Space & k::
+Space & 9::
 {
     ShowHotkeyAction("向上滑动", 0)
     Send("{WheelUp}")
@@ -456,7 +470,7 @@ Space & k::
 }
 
 ;向下滑动
-Space & l::
+Space & 0::
 {
     ShowHotkeyAction("向下滑动", 0)
     Send("{WheelDown}")
@@ -498,7 +512,7 @@ Space & s::
 ; 定义热键 Win+F
 #f:: {
     ShowHotkeyAction("在D盘创建文件夹", 0)
-    
+
     ; 弹出输入框
     userInput := InputBox("创建文件夹", "aoyukmt-mkdir", "w260 h90")
 
