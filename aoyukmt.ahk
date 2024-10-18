@@ -600,9 +600,15 @@ Space & RShift:: {
     return
 }
 
-RShift:: {
+Space & .:: {
     ShowHotkeyAction("输入尖括号", 1)
     Send(">")
+    return   
+}
+
+Space & ,::{
+    ShowHotkeyAction("输入双尖括号",1)
+    Send("<>")
     return
 }
 

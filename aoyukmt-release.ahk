@@ -422,12 +422,6 @@ Space & ,:: {
     return
 }
 
-Space & .:: {
-    ShowHotkeyAction("输入尖括号", 1)
-    Send("<>")
-    return
-}
-
 Space & /:: {
     ShowHotkeyAction("输入字符--(?)", 1)
     Send("?")
@@ -445,6 +439,23 @@ Space & l:: {
     return
 }
 
+Space & RShift:: {
+    ShowHotkeyAction("输入小于号", 1)
+    Send("<")
+    return
+}
+
+Space & .:: {
+    ShowHotkeyAction("输入大于号", 1)
+    Send(">")
+    return
+}
+
+Space & /:: {
+    ShowHotkeyAction("输入字符--(?)", 1)
+    Send("?")
+    return
+}
 ; 按下 Space + i 显示当前窗口的输入法状态
 Space & i::
 {
